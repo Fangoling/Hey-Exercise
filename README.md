@@ -27,7 +27,7 @@ Until the deadline all of your PRs **need to be merged** and your final app **ne
 
 As a student it is really hard to keep up a healthy fitness routine, especially being consistent. Without a reminder I often just stop doing my routine and don't have motivation to start again.
 
-To overcome this challenge, I need an IOS application that can help me keep track of my fitness routine. First of all the app should allow me to add new routines, specify the weekdays and store a description of the training routine, second of all it would be nice to able to add exercises and the according current personal best (repition, weight, etc.).
+To overcome this challenge, I need an iOS application that can help me keep track of my fitness routine. First of all the app should allow me to add new routines, specify the weekdays and store a description of the training routine. Second of all,it would be nice to able to add exercises and the according current personal best (repition, weight, etc.).
 
 Additionally, I would like it if I could see get an overview over past personal bests to see my personal progress.
 
