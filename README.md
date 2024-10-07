@@ -25,11 +25,18 @@ Until the deadline all of your PRs **need to be merged** and your final app **ne
 
 ## Problem Statement (max. 500 words)
 
-TODO: Add your problem statement here. 
+As a student it is really hard to keep up a healthy fitness routine, especially being consistent. Without a reminder I often just stop doing my routine and don't have motivation to start again.
+
+To overcome this challenge, I need an IOS application that can help me keep track of my fitness routine. First of all the app should allow me to add new routines, specify the weekdays and store a description of the training routine, second of all it would be nice to able to add exercises and the according current personal best (repition, weight, etc.).
+
+Additionally, I would like it if I could see get an overview over past personal bests to see my personal progress.
+
+Moreover, the app should provide me with notification in a way of a motivational text to remind me of upcoming training sessions. This would help me keep a motivation and routine for my fitness journey.
+
+In summary, as a student who is trying to maintain a healthy and balanced life, I need an iOS app that helps me keep track of my fitness routine, remind me of workouts and give me insights into my past progress. With such an app, I would be able to make better decisions in maintaining a better routine, and ultimately achieve a healthier life.
 
 ## Requirements
 
-TODO: Document the requirements you fulfilled with your app. Discuss them with your tutor.
 
 ## Analysis
 
