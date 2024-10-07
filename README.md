@@ -23,29 +23,34 @@ Until the deadline all of your PRs **need to be merged** and your final app **ne
 
 ---
 
-## Problem Statement (max. 500 words)
+## Problem Statement
 
-As a student it is really hard to keep up a healthy fitness routine, especially being consistent. Without a reminder I often just stop doing my routine and don't have motivation to start again.
+As a student, it is really hard to keep up a healthy fitness routine, especially being consistent. Without reminders, I often stop doing my routine and lack the motivation to start again.
 
-To overcome this challenge, I need an iOS application that can help me keep track of my workouts. First of all the app should allow me to add new workouts, specify the weekdays and store a description of the workout. Second of all,it would be nice to able to add exercises and the according current performance metric (repition, weight, etc.).
+To overcome this challenge, I need an iOS application that can help me keep track of my workouts.
 
-Additionally, I would like it if I could see get an overview over past performances to see my personal progress.
+First of all, the app should allow me to add new workouts, specify the weekdays, and store a description of each workout.
 
-Moreover, the app should provide me with notification in a way of a motivational text to remind me of upcoming training sessions. This would help me keep a motivation and routine for my fitness journey.
+Second of all, it would be nice to be able to add exercises and the corresponding performance metrics (repetitions, weight, etc.), and I would like to have an overview of past performances to see my personal progress.
 
-In summary, as a student who is trying to maintain a healthy and balanced life, I need an iOS app that helps me keep track of my fitness routine, remind me of workouts and give me insights into my past progress. With such an app, I would be able to make better decisions in maintaining a better routine, and ultimately achieve a healthier life.
+Moreover, the app should provide me with notifications in the form of motivational texts to remind me of upcoming training sessions. This would help me maintain motivation and consistency in my fitness journey.
+
+Additionally, I want to be able to generate workouts consisting of exercises that I am capable of performing.
+
+In summary, as a student trying to maintain a healthy and balanced life, I need an iOS app that helps me keep track of my fitness routine, reminds me of workouts, and provides insights into my past progress. With such an app, I would be able to make better decisions in maintaining a better routine and ultimately achieve a healthier life.
 
 ## Requirements
-As a student, i need an application to track my workouts and exercises.
 
-- I want to be able to ...
-    - ...add new workouts
-    - ...edit workouts
-    - ...notify the user about upcoming workouts
-    - ...add new exercises
-    - ...store the performance metrics on the exercise
-    - ...display exercise progress in a graph
-    - ...generate workouts cosisting of stored exercises
+As a student, I need an application to track my workouts and exercises.
+
+I want to be able to ...
+- ...add new workouts
+- ...edit workouts
+- ...receive notifications about upcoming workouts
+- ...add new exercises
+- ...input performance metrics for the exercises
+- ...display exercise progress in a graph
+- ...generate workouts consisting of stored exercises
 
 ## Analysis
 
