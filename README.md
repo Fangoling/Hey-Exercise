@@ -27,23 +27,25 @@ Until the deadline all of your PRs **need to be merged** and your final app **ne
 
 As a student it is really hard to keep up a healthy fitness routine, especially being consistent. Without a reminder I often just stop doing my routine and don't have motivation to start again.
 
-To overcome this challenge, I need an iOS application that can help me keep track of my fitness routine. First of all the app should allow me to add new routines, specify the weekdays and store a description of the training routine. Second of all,it would be nice to able to add exercises and the according current personal best (repition, weight, etc.).
+To overcome this challenge, I need an iOS application that can help me keep track of my workouts. First of all the app should allow me to add new workouts, specify the weekdays and store a description of the workout. Second of all,it would be nice to able to add exercises and the according current performance metric (repition, weight, etc.).
 
-Additionally, I would like it if I could see get an overview over past personal bests to see my personal progress.
+Additionally, I would like it if I could see get an overview over past performances to see my personal progress.
 
 Moreover, the app should provide me with notification in a way of a motivational text to remind me of upcoming training sessions. This would help me keep a motivation and routine for my fitness journey.
 
 In summary, as a student who is trying to maintain a healthy and balanced life, I need an iOS app that helps me keep track of my fitness routine, remind me of workouts and give me insights into my past progress. With such an app, I would be able to make better decisions in maintaining a better routine, and ultimately achieve a healthier life.
 
 ## Requirements
+As a student, i need an application to track my workouts and exercises.
 
-- ...add a new routine
-- ...specify the date and time of the routine
-- ...store the description of the routine
-- ...notify the user about upcoming routines
-- ...add a new exercises
-- ...store the personal performance on the exercise
-- ...inspect the progress on the exercise
+- I want to be able to ...
+    - ...add new workouts
+    - ...edit workouts
+    - ...notify the user about upcoming workouts
+    - ...add new exercises
+    - ...store the performance metrics on the exercise
+    - ...display exercise progress in a graph
+    - ...generate workouts cosisting of stored exercises
 
 ## Analysis
 
