@@ -37,6 +37,13 @@ In summary, as a student who is trying to maintain a healthy and balanced life, 
 
 ## Requirements
 
+- ...add a new routine
+- ...specify the date and time of the routine
+- ...store the description of the routine
+- ...notify the user about upcoming routines
+- ...add a new exercises
+- ...store the personal performance on the exercise
+- ...inspect the progress on the exercise
 
 ## Analysis
 
