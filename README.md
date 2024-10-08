@@ -68,10 +68,10 @@ TODO: Include a system design overview describing your application.
 |   1    | Add exercise |
 |   2    | Edit exercise |
 |   3    | Delete exercise |
-|   4    | Add progress to exercise |
-|   5    | Edit progess |
-|   6    | Delete progress |
-|   7    | Display progress in a graph |
+|   4    | Add performance to exercise |
+|   5    | Edit performance |
+|   6    | Delete performance |
+|   7    | Display performances in a graph |
 |   8    | Add workout |
 |   9    | Edit workout |
 |   10   | Delete workout |
