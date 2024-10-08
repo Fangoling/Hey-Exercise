@@ -54,7 +54,7 @@ I want to be able to ...
 
 ## Analysis
 
-TODO: Include an analysis object model. You can use [draw.io](https://draw.io) or [apollon](https://apollon.ase.cit.tum.de) to create it. Please add all models as an Image - not as a link!
+![Analysis Model of the Fitness Tracker App](./UMLClassDiagram.png)
 
 ## System Design
 
