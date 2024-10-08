@@ -65,10 +65,15 @@ TODO: Include a system design overview describing your application.
 
 | name   |  task  |
 | ------ | ------ |
-|   1    | Add a new exercises |
-|   2    | Edit a new exercises|
-|   3    | Add a progress to an exercise |
-|   4    | Display progress in a graph |
-|   5    | Add workouts |
-|   6    | Edit workouts |
-|   7    | Notify Users about upcoming Workout|
+|   1    | Add exercise |
+|   2    | Edit exercise |
+|   3    | Delete exercise |
+|   4    | Add progress to exercise |
+|   5    | Edit progess |
+|   6    | Delete progress |
+|   7    | Display progress in a graph |
+|   8    | Add workout |
+|   9    | Edit workout |
+|   10   | Delete workout |
+|   11   | Notify User about workouts |
+|   12   | Generate workout using Ai |
