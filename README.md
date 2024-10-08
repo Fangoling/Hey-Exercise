@@ -53,8 +53,9 @@ I want to be able to ...
 - ...generate workouts consisting of stored exercises
 
 ## Analysis
-
-![Analysis Model of the Fitness Tracker App](./UMLClassDiagram.png)
+<div align="center">
+<img width=75% src="./UMLClassDiagram.png" alt="Analysis Model of the Fitness Tracker App">
+</div>
 
 ## System Design
 
