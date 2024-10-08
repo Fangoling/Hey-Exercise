@@ -59,7 +59,9 @@ I want to be able to ...
 
 ## System Design
 
-TODO: Include a system design overview describing your application.
+<div align="center">
+<img width=75% src="./systemdesign.drawio.png" alt="System Design of the Fitness Tracker App">
+</div>
 
 ## Product Backlog
 
