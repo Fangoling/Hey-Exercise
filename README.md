@@ -63,4 +63,12 @@ TODO: Include a system design overview describing your application.
 
 ## Product Backlog
 
-TODO: Add a product backlog and don't forget to update it with each MR.
+| name   |  task  |
+| ------ | ------ |
+|   1    | Add a new exercises |
+|   2    | Edit a new exercises|
+|   3    | Add a progress to an exercise |
+|   4    | Display progress in a graph |
+|   5    | Add workouts |
+|   6    | Edit workouts |
+|   7    | Notify Users about upcoming Workout|
