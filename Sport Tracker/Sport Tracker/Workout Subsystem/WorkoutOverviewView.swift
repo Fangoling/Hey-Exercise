@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct WorkoutOverviewView: View {
+    var body: some View {
+        Text("WorkoutOverviewView")
+    }
     
 }
 
