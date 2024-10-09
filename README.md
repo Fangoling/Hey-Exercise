@@ -23,22 +23,58 @@ Until the deadline all of your PRs **need to be merged** and your final app **ne
 
 ---
 
-## Problem Statement (max. 500 words)
+## Problem Statement
 
-TODO: Add your problem statement here. 
+As a student, it is really hard to keep up a healthy fitness routine, especially being consistent. Without reminders, I often stop doing my routine and lack the motivation to start again.
+
+To overcome this challenge, I need an iOS application that can help me keep track of my workouts.
+
+First of all, the app should allow me to add new workouts, specify the weekdays, and store a description of each workout.
+
+Second of all, it would be nice to be able to add exercises and the corresponding performance metrics (repetitions, weight, etc.), and I would like to have an overview of past performances to see my personal progress.
+
+Moreover, the app should provide me with notifications in the form of motivational texts to remind me of upcoming training sessions. This would help me maintain motivation and consistency in my fitness journey.
+
+Additionally, I want to be able to generate workouts consisting of exercises that I am capable of performing.
+
+In summary, as a student trying to maintain a healthy and balanced life, I need an iOS app that helps me keep track of my fitness routine, reminds me of workouts, and provides insights into my past progress. With such an app, I would be able to make better decisions in maintaining a better routine and ultimately achieve a healthier life.
 
 ## Requirements
 
-TODO: Document the requirements you fulfilled with your app. Discuss them with your tutor.
+As a student, I need an application to track my workouts and exercises.
+
+I want to be able to ...
+- ...add new workouts
+- ...edit workouts
+- ...receive notifications about upcoming workouts
+- ...add new exercises
+- ...input performance metrics for the exercises
+- ...display exercise progress in a graph
+- ...generate workouts consisting of stored exercises
 
 ## Analysis
-
-TODO: Include an analysis object model. You can use [draw.io](https://draw.io) or [apollon](https://apollon.ase.cit.tum.de) to create it. Please add all models as an Image - not as a link!
+<div align="center">
+<img width=75% src="./UMLClassDiagram.png" alt="Analysis Model of the Fitness Tracker App">
+</div>
 
 ## System Design
-
-TODO: Include a system design overview describing your application.
+<div align="center">
+<img width=75% src="./ComponentDiagram.png" alt="System Design of the Fitness Tracker App">
+</div>
 
 ## Product Backlog
 
-TODO: Add a product backlog and don't forget to update it with each MR.
+| name   |  task  | priority |
+| ------ | ------ | ------|
+|   1    | Add exercise | High |
+|   2    | Edit exercise | Medium |
+|   3    | Delete exercise | Medium |
+|   4    | Add performance to exercise | Medium |
+|   5    | Edit performance | Medium |
+|   6    | Delete performance | Medium |
+|   7    | Display performances in a graph | High |
+|   8    | Add workout | High |
+|   9    | Edit workout | Medium |
+|   10   | Delete workout | Medium |
+|   11   | Notify User about workouts | High |
+|   12   | Generate workout using Ai | Low |
