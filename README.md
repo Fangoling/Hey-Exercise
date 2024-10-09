@@ -66,15 +66,15 @@ I want to be able to ...
 
 | name   |  task  | priority |
 | ------ | ------ | ------|
-|   1    | Add exercise | Critical |
-|   2    | Edit exercise | Major |
-|   3    | Delete exercise | Major |
-|   4    | Add performance to exercise | Critical |
-|   5    | Edit performance | Major |
-|   6    | Delete performance | Major |
-|   7    | Display performances in a graph | Critical |
-|   8    | Add workout | Critical |
-|   9    | Edit workout | Major |
-|   10   | Delete workout | Major |
-|   11   | Notify User about workouts | Critical |
-|   12   | Generate workout using Ai | Minor |
+|   1    | Add exercise | High |
+|   2    | Edit exercise | Medium |
+|   3    | Delete exercise | Medium |
+|   4    | Add performance to exercise | Medium |
+|   5    | Edit performance | Medium |
+|   6    | Delete performance | Medium |
+|   7    | Display performances in a graph | High |
+|   8    | Add workout | High |
+|   9    | Edit workout | Medium |
+|   10   | Delete workout | Medium |
+|   11   | Notify User about workouts | High |
+|   12   | Generate workout using Ai | Low |
