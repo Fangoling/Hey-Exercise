@@ -59,7 +59,7 @@ I want to be able to ...
 
 ## System Design
 <div align="center">
-<img width=50% src="./systemdesign.drawio.png" alt="System Design of the Fitness Tracker App">
+<img width=50% src="./ComponentDiagram.png" alt="System Design of the Fitness Tracker App">
 </div>
 
 ## Product Backlog
