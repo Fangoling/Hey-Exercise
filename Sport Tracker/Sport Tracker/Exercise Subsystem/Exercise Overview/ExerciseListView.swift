@@ -7,9 +7,7 @@
 import SwiftUI
 
 struct ExerciseListView: View {
-    
     @Environment(Model.self) private var model: Model
-    
     var body: some View {
         List {
             ForEach(model.exercises, id: \.self) { exercise in
@@ -26,10 +24,9 @@ struct ExerciseListView: View {
         .navigationDestination(for: Exercise.self) { exercise in
             ExerciseDetailContentView(id: exercise.id)
         }
-        
     }
 }
 
 #Preview {
-    ExerciseListView().environment(MockModel() as Model)
+    ExerciseListView().environment(Model() as Model)
 }

@@ -11,7 +11,6 @@ struct WorkoutOverviewView: View {
     var body: some View {
         Text("WorkoutOverviewView")
     }
-    
 }
 
 #Preview {

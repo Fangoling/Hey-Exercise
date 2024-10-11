@@ -9,22 +9,19 @@ import SwiftUI
 import Charts
 
 struct ExerciseChartView: View {
-    
     @Environment(Model.self) private var model: Model
-    
-    var data: [Int]
-    
+    var data: [Performance]
+    var exerciseType: ExerciseType
     var body: some View {
-        Chart {
-            ForEach(data, id: \.self) { value in
-                BarMark(
-                   x: .value("Day", value),
-                   y: .value("Reps", value)
-                )
-            }
+        Chart(data) {
+            BarMark(
+                x: .value("Day", $0.date),
+                y: .value(exerciseType.description, $0.getValue(for: exerciseType) ?? 0.0)
+            )
         }
-        .frame(height: 200)
+        .frame(maxWidth: .infinity)
+        .scaleEffect(0.8)
+        .background(Color("CardColor"))
         .padding()
     }
-    
 }

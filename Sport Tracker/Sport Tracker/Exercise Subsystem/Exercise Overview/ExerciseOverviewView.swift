@@ -9,13 +9,11 @@ import SwiftUI
 
 struct ExerciseOverView: View {
     @Environment(Model.self) private var model: Model
-    
     @State private var addSheetOpen = false
-    
-
     var body: some View {
-       NavigationStack{
+       NavigationStack {
            ExerciseListView()
+               .backgroundViewModifier()
                .navigationTitle("Exercises")
                .toolbar {
                     ToolbarItem(placement: .primaryAction) {

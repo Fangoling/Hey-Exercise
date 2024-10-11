@@ -7,12 +7,37 @@
 
 import Foundation
 
+public enum ExerciseType: CustomStringConvertible {
+    case weight
+    case repetitions
+    case duration
+    public var description: String {
+        switch self {
+        case .weight: return "Weight"
+        case .repetitions: return "Repetitions"
+        case .duration: return "Duration"
+        }
+    }
+}
+
 public struct Exercise {
-    public var id: UUID?
+    static var currentId: Int = 0
+    public var id: Int
     public var name: String
     public var description: String
-    public var icon: String?
-    public var progress: [Int] = [1,2,3,4,5,6,7]
+    public var types: [ExerciseType]
+    public var performances: [Performance]
+    public init(name: String, description: String, types: [ExerciseType]) {
+        self.id = Exercise.currentId
+        Exercise.currentId += 1
+        self.name = name
+        self.description = description
+        self.types = types
+        self.performances = []
+    }
+    public mutating func addPerformance(_ performance: Performance) {
+        self.performances.append(performance)
+    }
 }
 
 // MARK: Exercise: Hashable
