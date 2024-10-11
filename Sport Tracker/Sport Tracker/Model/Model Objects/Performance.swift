@@ -38,3 +38,6 @@ extension Performance: Hashable { }
 
 @available(iOS 17.0, *)
 extension Performance: Identifiable { }
+
+@available(iOS 17.0, *)
+extension Performance: Codable { }

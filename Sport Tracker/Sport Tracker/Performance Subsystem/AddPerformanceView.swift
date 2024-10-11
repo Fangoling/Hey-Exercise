@@ -53,7 +53,3 @@ struct AddPerformanceView: View {
         }
     }
 }
-
-#Preview {
-    AddExerciseView().environment(Model() as Model)
-}

@@ -104,4 +104,11 @@ import Foundation
         }
         return []
     }
+    public func save(_ exercise: Exercise) {
+        let newExercise = exercise
+        self.exercises.replaceAndSort(newExercise)
+    }
+    public func delete(exerciseId id: Int?) {
+        self.exercises.removeAll(where: { $0.id == id })
+    }
 }
