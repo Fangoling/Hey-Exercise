@@ -111,4 +111,20 @@ import Foundation
     public func delete(exerciseId id: Int?) {
         self.exercises.removeAll(where: { $0.id == id })
     }
+    private func fetchQuote() async throws -> [Quote] {
+        let quoteUrl: String = "https://zenquotes.io/api/random"
+        guard let url = URL(string: quoteUrl) else {
+            throw URLError(.badURL)
+        }
+        let (data, _) = try await URLSession.shared.data(from: url)
+        let quotes = try JSONDecoder().decode([Quote].self, from: data)
+        return quotes
+    }
+    public func fetchQuoteCaller() {
+        let quote = Quote("Empty","","")
+        Task {
+            quote = await fetchQuote()
+        }
+        return quote
+    }
 }
