@@ -23,7 +23,8 @@ struct ExerciseOverView: View {
                             Image(systemName: "plus")
                         })
                     }
-                }.sheet(isPresented: $addSheetOpen) {
+                }
+                .sheet(isPresented: $addSheetOpen) {
                     AddExerciseView()
                 }
         }

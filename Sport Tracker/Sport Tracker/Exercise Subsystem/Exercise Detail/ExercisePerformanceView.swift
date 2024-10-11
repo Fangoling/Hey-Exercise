@@ -31,7 +31,8 @@ struct ExercisePerformanceView: View {
                         }
                     })
                 }
-            }.sheet(isPresented: $addSheetOpen) {
+            }
+            .sheet(isPresented: $addSheetOpen) {
                 AddPerformanceView(id: id)
                     .presentationDetents([.medium])
             }
