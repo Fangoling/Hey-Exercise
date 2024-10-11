@@ -31,10 +31,10 @@ struct ExercisePerformanceView: View {
                         }
                     })
                 }
-            }.sheet(isPresented: $addSheetOpen, content: {
+            }.sheet(isPresented: $addSheetOpen) {
                 AddPerformanceView(id: id)
                     .presentationDetents([.medium])
-            })
+            }
         }
     }
 }

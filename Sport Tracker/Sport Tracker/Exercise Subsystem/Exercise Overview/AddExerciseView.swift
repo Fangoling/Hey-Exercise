@@ -25,16 +25,16 @@ struct AddExerciseView: View {
                 }
                 ExerciseTypePickerView(exerciseTypes: $exerciseTypes)
             }.navigationTitle("Add Exercise")
-                .toolbar {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        Button {
-                            model.addExercise(name: name, description: description, exerciseTypes: exerciseTypes)
-                            dismiss()
-                        } label: {
-                            Text("Add").bold()
-                        }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        model.addExercise(name: name, description: description, exerciseTypes: exerciseTypes)
+                        dismiss()
+                    } label: {
+                        Text("Add").bold()
                     }
                 }
+            }
         }
     }
 }
@@ -47,8 +47,8 @@ struct ExerciseTypePickerView: View {
             ForEach(exerciseTypeOverview, id: \.self) { type in
                 Button(action: {
                     exerciseTypes.contains(type)
-                    ? exerciseTypes.removeAll(where: { $0 == type })
-                    : exerciseTypes.append(type)
+                        ? exerciseTypes.removeAll(where: { $0 == type })
+                        : exerciseTypes.append(type)
                 }, label: {
                     HStack {
                         Text(type.description)

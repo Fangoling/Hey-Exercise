@@ -28,27 +28,28 @@ struct AddPerformanceView: View {
                     Section(header: Text(type.description)) {
                         switch type {
                         case .weight:
-                        TextField("", value: $weight, formatter: formatter)
+                            TextField("", value: $weight, formatter: formatter)
                         case .duration:
-                        TextField("", value: $duration, formatter: formatter)
+                            TextField("", value: $duration, formatter: formatter)
                         case .repetitions:
-                        TextField("", value: $repetitions, formatter: formatter)
+                            TextField("", value: $repetitions, formatter: formatter)
                         }
                     }
                 }
             }.navigationTitle("Add Performance")
-                .toolbar {
-                    ToolbarItem(placement: .bottomBar) {
-                        Button {
-                            model.addPerformance(id: id,
-                                Performance(date: date, repetitions: repetitions, weight: weight, duration: duration)
-                            )
-                            dismiss()
-                        } label: {
-                            Text("Add").bold()
-                        }
+            .toolbar {
+                ToolbarItem(placement: .bottomBar) {
+                    Button {
+                        model.addPerformance(
+                            id: id,
+                            Performance(date: date, repetitions: repetitions, weight: weight, duration: duration)
+                        )
+                        dismiss()
+                    } label: {
+                        Text("Add").bold()
                     }
                 }
+            }
         }
     }
 }

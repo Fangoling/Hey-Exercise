@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct SportTrackerApp: App {
-    @State var globalViewModel: Model = Model()
+    @State var globalViewModel = Model()
     var body: some Scene {
         WindowGroup {
             ExerciseOverView()

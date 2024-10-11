@@ -34,7 +34,7 @@ import Foundation
                 types: [.repetitions, .weight]
             )
         ]
-        let startDate: Date = Date.now
+        let startDate = Date.now
         let repetitions = [10.0, 11.0, 12.0, 20.0, 23.0, 27.0, 30.0]
         let durations: [Double] = [30, 30, 40, 50, 55, 55, 60]
         let repAndWeight: [(Double, Double)] = [(10, 30), (12, 30), (8, 40), (3, 50), (7, 50)]
@@ -55,7 +55,6 @@ import Foundation
                 let performance = Performance(date: perfday, duration: duration)
                 self.exercises[2].addPerformance(performance)
             }
-
         }
     }
     public func addExercise(name: String, description: String, exerciseTypes: [ExerciseType]) {
@@ -75,10 +74,22 @@ import Foundation
     public func bestPerformance(_ id: Int, for exerciseType: ExerciseType) -> Performance? {
         let performanceList = exercise(id)?.performances
         return performanceList?.max {
-            return switch exerciseType {
-            case .repetitions: $0.repetitions! < $1.repetitions!
-            case .duration: $0.duration! < $1.duration!
-            case .weight: $0.weight! < $1.weight!
+            switch exerciseType {
+            case .repetitions:
+                guard let rep1 = $0.repetitions, let rep2 = $1.repetitions else {
+                    return false
+                }
+                return rep1 < rep2
+            case .weight:
+                guard let rep1 = $0.weight, let rep2 = $1.weight else {
+                    return false
+                }
+                return rep1 < rep2
+            case .duration:
+                guard let rep1 = $0.duration, let rep2 = $1.duration else {
+                    return false
+                }
+                return rep1 < rep2
             }
         }
     }

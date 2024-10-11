@@ -11,11 +11,11 @@ struct ExerciseOverView: View {
     @Environment(Model.self) private var model: Model
     @State private var addSheetOpen = false
     var body: some View {
-       NavigationStack {
-           ExerciseListView()
-               .backgroundViewModifier()
-               .navigationTitle("Exercises")
-               .toolbar {
+        NavigationStack {
+            ExerciseListView()
+                .backgroundViewModifier()
+                .navigationTitle("Exercises")
+                .toolbar {
                     ToolbarItem(placement: .primaryAction) {
                         Button(action: {
                             addSheetOpen.toggle()
@@ -23,8 +23,10 @@ struct ExerciseOverView: View {
                             Image(systemName: "plus")
                         })
                     }
-               }.sheet(isPresented: $addSheetOpen, content: { AddExerciseView() })
-       }
+                }.sheet(isPresented: $addSheetOpen) {
+                    AddExerciseView()
+                }
+        }
     }
 }
 
