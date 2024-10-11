@@ -8,27 +8,36 @@
 import SwiftUI
 
 struct AddExerciseView: View {
-    @Environment(Model.self) private var model: Model
     @Environment(\.dismiss) private var dismiss
-    @State var name: String = ""
-    @State var description: String = ""
-    @State var exerciseTypes: [ExerciseType] = []
+    @State private var addExerciseViewModel: AddExerciseViewModel
+    init(model: Model, id: Int?) {
+        self._addExerciseViewModel = State(wrappedValue: AddExerciseViewModel(model, id: id))
+    }
 
     var body: some View {
         NavigationStack {
             Form {
                 Section(header: Text("Name")) {
-                    TextField("Name", text: $name)
+                    TextField("Name", text: $addExerciseViewModel.name)
                 }
                 Section(header: Text("Notes")) {
-                    TextField("", text: $description)
+                    TextField("", text: $addExerciseViewModel.description)
                 }
-                ExerciseTypePickerView(exerciseTypes: $exerciseTypes)
-            }.navigationTitle("Add Exercise")
+                if addExerciseViewModel.editing {
+                    Section(header: Text("Exercise Type")) {
+                        ExerciseTypePickerView(exerciseTypes: $addExerciseViewModel.types)
+                    }
+                }
+            }
+            .task {
+                addExerciseViewModel.updateStates()
+            }
+            .navigationTitle(addExerciseViewModel.editing ? "Add Exercise" : "Add Exercise")
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
-                        model.addExercise(name: name, description: description, exerciseTypes: exerciseTypes)
+                        addExerciseViewModel.save()
+                        addExerciseViewModel.editing = false
                         dismiss()
                     } label: {
                         Text("Add").bold()
@@ -63,7 +72,4 @@ struct ExerciseTypePickerView: View {
             }
         }
     }
-}
-#Preview {
-    AddExerciseView().environment(Model() as Model)
 }

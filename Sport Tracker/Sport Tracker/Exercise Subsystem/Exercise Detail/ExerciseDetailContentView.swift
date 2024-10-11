@@ -14,7 +14,7 @@ struct ExerciseDetailContentView: View {
     var body: some View {
         TabView {
             Tab("Overview", systemImage: "list.bullet") {
-                ExerciseView(id: id)
+                ExerciseView(model: model, modelId: id, id: id)
             }
             Tab("Performance", systemImage: "chart.bar.fill") {
                 ExercisePerformanceView(id: id)

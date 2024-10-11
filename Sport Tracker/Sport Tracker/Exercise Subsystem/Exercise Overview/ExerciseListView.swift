@@ -22,7 +22,9 @@ struct ExerciseListView: View {
         }
         .listStyle(.sidebar)
         .navigationDestination(for: Exercise.self) { exercise in
-            ExerciseDetailContentView(id: exercise.id)
+            if let exerciseId = exercise.id {
+                ExerciseDetailContentView(id: exerciseId)
+            }
         }
     }
 }
