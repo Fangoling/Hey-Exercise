@@ -10,29 +10,51 @@ import Charts
 
 struct ExercisePerformanceView: View {
     @Environment(Model.self) private var model: Model
+    @State private var addSheetOpen: Bool = false
     var id: Int
     var body: some View {
         let sortedPerformances = model.sortedPerformance(id, for: .repetitions)
-        Text(model.exercise(id)?.name ?? "No exercise selected").font(.title)
-        List {
-            ForEach(sortedPerformances, id: \.self) { perf in
-                VStack(alignment: .leading) {
-                    Text(perf.date.formatted(.dateTime)).font(.caption)
-                    Spacer()
-                    HStack {
-                        if let reps = perf.repetitions {
-                            Spacer()
-                            Text("\(reps) repetitions").font(Font.system(size: 24, weight: .bold))
-                            Spacer()
+        NavigationView {
+            List {
+                ForEach(sortedPerformances, id: \.self) { perf in
+                    PerformanceView(performance: perf)
+                }
+            }
+            .navigationTitle("Perfomances")
+            .toolbar {
+                ToolbarItem(placement: .bottomBar) {
+                    Button(action: {
+                        addSheetOpen.toggle()
+                    }, label: {
+                        ZStack {
+                            Image(systemName: "plus")
                         }
-                        if let weight = perf.weight {
-                            Text("\(weight) kg").font(.caption)
-                        }
-                        Spacer()
-                        if let duration = perf.duration {
-                            Text("\(duration) seconds").font(.caption)
-                        }
-                    }
+                    })
+                }
+            }.sheet(isPresented: $addSheetOpen, content: {
+                AddPerformanceView(id: id)
+                    .presentationDetents([.medium])
+            })
+        }
+    }
+}
+
+struct PerformanceView: View {
+    var performance: Performance
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text(performance.date.formatted(.dateTime)).font(.caption)
+            Spacer()
+            HStack {
+                Spacer()
+                if let reps = performance.repetitions {
+                    Text("\(reps.formatted(.number)) x").font(.headline)
+                }
+                if let weight = performance.weight {
+                    Text("\(weight.formatted(.number)) kg").font(.headline)
+                }
+                if let duration = performance.duration {
+                    Text("\(duration.formatted(.number)) seconds").font(.headline)
                 }
             }
         }
