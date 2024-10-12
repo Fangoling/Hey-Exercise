@@ -33,8 +33,8 @@ struct ExerciseView: View {
                     }
                     .cardViewModifier()
                     HStack(alignment: .center) {
-                        EditButton(viewModel: $addExerciseViewModel).padding()
-                        DeleteButton(viewModel: $addExerciseViewModel).padding()
+                        ExerciseEditButton(viewModel: $addExerciseViewModel).padding()
+                        ExerciseDeleteButton(viewModel: $addExerciseViewModel).padding()
                     }
                 }
             }.sheet(isPresented: $addExerciseViewModel.showEditSheet) {
@@ -59,7 +59,7 @@ struct ExerciseDetailView: View {
     }
 }
 
-struct DeleteButton: View {
+struct ExerciseDeleteButton: View {
     @Binding var viewModel: AddExerciseViewModel
     @Environment(\.dismiss) private var dismiss
 
@@ -88,7 +88,7 @@ struct DeleteButton: View {
     }
 }
 
-struct EditButton: View {
+struct ExerciseEditButton: View {
     @Binding var viewModel: AddExerciseViewModel
     var body: some View {
         Button(action: {

@@ -32,7 +32,7 @@ struct AddExerciseView: View {
             .task {
                 addExerciseViewModel.updateStates()
             }
-            .navigationTitle(addExerciseViewModel.editing ? "Add Exercise" : "Add Exercise")
+            .navigationTitle(addExerciseViewModel.editing ? "Edit Exercise" : "Add Exercise")
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {

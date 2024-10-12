@@ -8,9 +8,10 @@ import SwiftUI
 
 struct ExerciseListView: View {
     @Environment(Model.self) private var model: Model
+    @State private var searchText: String = ""
     var body: some View {
         List {
-            ForEach(model.exercises, id: \.self) { exercise in
+            ForEach(searchResults, id: \.self) { exercise in
                 NavigationLink(value: exercise, label: {
                     ZStack {
                         HStack {
@@ -25,6 +26,14 @@ struct ExerciseListView: View {
             if let exerciseId = exercise.id {
                 ExerciseDetailContentView(id: exerciseId)
             }
+        }
+        .searchable(text: $searchText)
+    }
+    var searchResults: [Exercise] {
+        if searchText.isEmpty {
+            return model.exercises
+        } else {
+            return model.exercises.filter { $0.name.contains(searchText) }
         }
     }
 }

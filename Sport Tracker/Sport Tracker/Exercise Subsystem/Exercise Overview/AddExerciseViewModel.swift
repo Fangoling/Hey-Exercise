@@ -48,14 +48,14 @@ import SwiftUI
             description: self.description,
             types: self.types
         )
-        model.save(exercise)
+        model.saveExercise(exercise)
         self.updateStates()
     }
     func delete() {
         guard let id = id, let model = model else {
             return
         }
-        model.delete(exerciseId: id)
+        model.deleteExercise(exerciseId: id)
         self.updateStates()
     }
 }
