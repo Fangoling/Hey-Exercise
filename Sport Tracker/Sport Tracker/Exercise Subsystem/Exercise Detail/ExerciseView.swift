@@ -26,14 +26,12 @@ struct ExerciseView: View {
                 VStack {
                     ForEach(exerciseTypes, id: \.self) { type in
                         ExerciseDetailView(id: id, type: type, data: data)
-                            .shadow(color: Color.black.opacity(0.2), radius: 4)
                     }
                     VStack {
                         Text("Notes").font(.largeTitle)
                         Text(exercise?.description ?? "No notes")
                     }
                     .cardViewModifier()
-                    .shadow(color: Color.black.opacity(0.2), radius: 4)
                     HStack(alignment: .center) {
                         EditButton(viewModel: $addExerciseViewModel).padding()
                         DeleteButton(viewModel: $addExerciseViewModel).padding()
@@ -53,7 +51,7 @@ struct ExerciseDetailView: View {
     var data: [Performance]
     var body: some View {
         VStack {
-            Text(type.description).font(.largeTitle).padding()
+            Text(type.description).font(.largeTitle)
             BestPerformanceView(id: id, exerciseType: type)
             ExerciseChartView(data: data, exerciseType: type)
         }

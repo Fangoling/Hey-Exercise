@@ -10,6 +10,8 @@ import Charts
 
 struct ExerciseDetailContentView: View {
     @Environment(Model.self) private var model: Model
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    @State private var showTabBar = false
     var id: Int
     var body: some View {
         TabView {
@@ -20,5 +22,16 @@ struct ExerciseDetailContentView: View {
                 ExercisePerformanceView(id: id)
             }
         }
+        // hacky toolbar to hide outer tabbar when inside the nested tabbar
+        // prevents slow reload of outer tabbar when going back
+        .toolbar(showTabBar ? .visible : .hidden, for: .tabBar)
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: Button(action: {
+            self.mode.wrappedValue.dismiss()
+            showTabBar.toggle()
+        }) {
+            Image(systemName: "chevron.backward").bold()
+            Text("Back")
+        })
     }
 }
