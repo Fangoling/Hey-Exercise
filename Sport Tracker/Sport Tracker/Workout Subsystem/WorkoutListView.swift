@@ -14,17 +14,6 @@ struct WorkoutListView: View {
     var body: some View {
         List {
             ForEach(model.workouts, id: \.self) { workout in
-                /*
-                 ZStack {
-                 HStack {
-                 Text(workout.date.formatted(.dateTime))
-                 }.padding()
-                 }
-                 .onTapGesture {
-                 self.currentID = workout.id
-                 showAddWorkoutSheet = true
-                 }
-                 */
                 NavigationLink(destination: AddWorkoutView(model: model, id: workout.id)) {
                     HStack {
                         Text(workout.date.formatted(.dateTime))
@@ -33,7 +22,6 @@ struct WorkoutListView: View {
                 }
             }
         }
-        .sheet(isPresented: $showAddWorkoutSheet) { AddWorkoutView(model: model, id: currentID) }
         .navigationTitle("Workouts")
         .listStyle(.sidebar)
     }
