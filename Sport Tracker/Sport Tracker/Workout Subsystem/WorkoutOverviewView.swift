@@ -67,8 +67,7 @@ struct MotivationalQuoteView: View {
                     Text("\(quote.q)")
                         .font(Font.custom("adelia", size: 20))
                 } else {
-                    Text("\(quote.q)")
-                        .font(Font.custom("", size: 20))
+                    Text("\(quote.q)").font(Font.system(size: 20))
                 }
                 Text("- \(quote.a)").font(.headline)
             }
