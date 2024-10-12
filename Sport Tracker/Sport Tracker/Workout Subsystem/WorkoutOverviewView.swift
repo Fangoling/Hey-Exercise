@@ -57,13 +57,24 @@ struct UpComingWorkoutView: View {
 
 struct MotivationalQuoteView: View {
     var quote: Quote
+    @State var showCustomFont: Bool = true
     var body: some View {
-        VStack {
-            Text("\(quote.q)")
-                .font(.title)
-            Text("- \(quote.a)").font(.title)
-        }
-        .cardViewModifier()
+        Button(action: {
+            showCustomFont.toggle()
+        }, label: {
+            VStack {
+                if showCustomFont {
+                    Text("\(quote.q)")
+                        .font(Font.custom("adelia", size: 20))
+                } else {
+                    Text("\(quote.q)")
+                        .font(Font.custom("", size: 20))
+                }
+                Text("- \(quote.a)").font(.headline)
+            }
+            .foregroundStyle(.black)
+            .cardViewModifier()
+        })
     }
 }
 
