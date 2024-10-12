@@ -9,6 +9,10 @@ import Foundation
 
 @Observable public class Model {
     public var exercises: [Exercise]
+    public var tabVisible: Bool = true
+    public var username: String = "Fangxing"
+    var currentQuote: Quote = Quote(q: "", a: "", h: "")
+    public var allowNotifications: Bool = false
     public init(
         exercises: [Exercise] = []
     ) {
@@ -111,20 +115,25 @@ import Foundation
     public func delete(exerciseId id: Int?) {
         self.exercises.removeAll(where: { $0.id == id })
     }
-    private func fetchQuote() async throws -> [Quote] {
+    func fetchQuote() async throws -> Quote {
         let quoteUrl: String = "https://zenquotes.io/api/random"
         guard let url = URL(string: quoteUrl) else {
             throw URLError(.badURL)
         }
         let (data, _) = try await URLSession.shared.data(from: url)
         let quotes = try JSONDecoder().decode([Quote].self, from: data)
-        return quotes
+        return quotes[0]
     }
-    public func fetchQuoteCaller() {
-        let quote = Quote("Empty","","")
+    func getQuote() async throws {
         Task {
-            quote = await fetchQuote()
+            do {
+                let quote = try await fetchQuote()
+                DispatchQueue.main.async {
+                    self.currentQuote = quote
+                }
+            } catch {
+                print("Error while fetching")
+            }
         }
-        return quote
     }
 }
