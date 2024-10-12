@@ -9,12 +9,14 @@ import Foundation
 
 @Observable public class Model {
     public var exercises: [Exercise]
+    public var workouts: [Workout]
     public var tabVisible: Bool = true
     public var username: String = "Fangxing"
     var currentQuote: Quote = Quote(q: "", a: "", h: "")
     public var allowNotifications: Bool = false
     public init(
-        exercises: [Exercise] = []
+        exercises: [Exercise] = [],
+        workouts: [Workout] = []
     ) {
         self.exercises = [
             Exercise(
@@ -38,6 +40,7 @@ import Foundation
                 types: [.repetitions, .weight]
             )
         ]
+        self.workouts = []
         let startDate = Date.now
         let repetitions = [10.0, 11.0, 12.0, 20.0, 23.0, 27.0, 30.0]
         let durations: [Double] = [30, 30, 40, 50, 55, 55, 60]
@@ -60,7 +63,9 @@ import Foundation
                 self.exercises[2].addPerformance(performance)
             }
         }
+        self.workouts = [Workout(date: Date(), exercisePairs: [ExercisePerformancePair(exercise: self.exercises[0], performance: self.exercises[0].performances[0])])]
     }
+    // Exercise functions
     public func addExercise(name: String, description: String, exerciseTypes: [ExerciseType]) {
         exercises.append(Exercise(name: name, description: description, types: exerciseTypes))
     }
@@ -108,13 +113,33 @@ import Foundation
         }
         return []
     }
-    public func save(_ exercise: Exercise) {
+    public func saveExercise(_ exercise: Exercise) {
         let newExercise = exercise
         self.exercises.replaceAndSort(newExercise)
     }
-    public func delete(exerciseId id: Int?) {
+    public func deleteExercise(exerciseId id: Int?) {
         self.exercises.removeAll(where: { $0.id == id })
     }
+    // Workout functions
+    public func workout(_ id: Int) -> Workout? {
+        return workouts.first(where: { $0.id == id })
+    }
+    public func getDateSortedWorkout() -> [Workout] {
+        return workouts.sorted {
+            $0.date > $1.date
+        }
+    }
+    public func getLatestWorkout() -> Workout? {
+        return getDateSortedWorkout()[0]
+    }
+    public func saveWorkout(_ workout: Workout) {
+        let newWorkout = workout
+        self.workouts.replaceAndSort(newWorkout)
+    }
+    public func deleteWorkout(exerciseId id: Int?) {
+        self.exercises.removeAll(where: { $0.id == id })
+    }
+    // Quote functions
     func fetchQuote() async throws -> Quote {
         let quoteUrl: String = "https://zenquotes.io/api/random"
         guard let url = URL(string: quoteUrl) else {
