@@ -21,12 +21,15 @@ private struct BackgroundViewModifier: ViewModifier {
 }
 
 private struct CardViewModifier: ViewModifier {
+    var backgroundColor: Color = Color("CardColor")
     func body(content: Content) -> some View {
         content
-            .frame(maxWidth: .infinity, minHeight: 200, alignment: .center)
+            .padding()
+            .frame(maxWidth: .infinity, minHeight: 150, alignment: .center)
             .background(Color("CardColor"))
             .cornerRadius(20)
-            .padding()
+            .padding(10)
+            .shadow(color: Color.black.opacity(0.2), radius: 4)
     }
 }
 
