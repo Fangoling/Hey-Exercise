@@ -11,7 +11,7 @@ struct WorkoutOverviewView: View {
     @Environment(Model.self) private var model: Model
     @State private var showAddWorkoutSheet: Bool = false
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 HStack {
                     Text("Welcome Back ")

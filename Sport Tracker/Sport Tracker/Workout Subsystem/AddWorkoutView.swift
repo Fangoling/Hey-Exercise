@@ -21,40 +21,37 @@ struct AddWorkoutView: View {
         self._workoutViewModel = State(wrappedValue: AddWorkoutViewModel(model, id))
     }
     var body: some View {
-        NavigationView {
-            Form {
-                Section(header: Text("Date")) {
-                    DatePicker("Date", selection: $workoutViewModel.date, displayedComponents: [.date])
-                }
-                ForEach(workoutViewModel.exercisePairs, id: \.self) {
-                    PerformanceInWorkoutView(exercise: $0.exercise, performance: $0.performance)
-                }
-                // .onMove (perform: workoutViewModel.move)
-                .onDelete(perform: workoutViewModel.delete)
-                Section {
-                    ExercisePickerView(pickedExercises: $workoutViewModel.exercisePairs, exercises: mainModel.exercises, model: mainModel, weight: $weight, repetitions: $repetitions, duration: $duration, expandedExercise: $exerciseSelected)
-                        .background(Color(.white))
-                }
+        Form {
+            Section(header: Text("Date")) {
+                DatePicker("Date", selection: $workoutViewModel.date, displayedComponents: [.date])
             }
-            .task {
-                workoutViewModel.updateStates()
+            ForEach(workoutViewModel.exercisePairs, id: \.self) {
+                PerformanceInWorkoutView(exercise: $0.exercise, performance: $0.performance)
             }
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        workoutViewModel.save()
-                        workoutViewModel.editing = false
-                        dismiss()
-                    } label: {
-                        Text("Save").bold()
-                    }
-                }
+            // .onMove (perform: workoutViewModel.move)
+            .onDelete(perform: workoutViewModel.delete)
+            Section {
+                ExercisePickerView(pickedExercises: $workoutViewModel.exercisePairs, exercises: mainModel.exercises, model: mainModel, weight: $weight, repetitions: $repetitions, duration: $duration, expandedExercise: $exerciseSelected)
+                    .background(Color(.white))
             }
-            .toolbar(showTabBar ? .visible : .hidden, for: .tabBar, .bottomBar)
-            .navigationBarBackButtonHidden(true)
-            // hacky toolbar to hide outer tabbar when inside the nested tabbar
-            // prevents slow reload of outer tabbar when going back
         }
+        .task {
+            workoutViewModel.updateStates()
+        }
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    workoutViewModel.save()
+                    workoutViewModel.editing = false
+                    dismiss()
+                } label: {
+                    Text("Save").bold()
+                }
+            }
+        }
+        .toolbar(showTabBar ? .visible : .hidden, for: .tabBar, .bottomBar)
+        // hacky toolbar to hide outer tabbar when inside the nested tabbar
+        // prevents slow reload of outer tabbar when going back
     }
 }
 
