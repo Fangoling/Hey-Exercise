@@ -13,7 +13,6 @@ struct AddExerciseView: View {
     init(model: Model, id: Int?) {
         self._addExerciseViewModel = State(wrappedValue: AddExerciseViewModel(model, id: id))
     }
-
     var body: some View {
         NavigationStack {
             Form {

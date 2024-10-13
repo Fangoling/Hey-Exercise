@@ -64,12 +64,12 @@ struct MotivationalQuoteView: View {
         }, label: {
             VStack {
                 if showCustomFont {
-                    Text("\(quote.q)")
+                    Text("\(quote.quote)")
                         .font(Font.custom("adelia", size: 20))
                 } else {
-                    Text("\(quote.q)").font(Font.system(size: 20))
+                    Text("\(quote.quote)").font(Font.system(size: 20))
                 }
-                Text("- \(quote.a)").font(.headline)
+                Text("- \(quote.author)").font(.headline)
             }
             .foregroundStyle(.black)
             .cardViewModifier()

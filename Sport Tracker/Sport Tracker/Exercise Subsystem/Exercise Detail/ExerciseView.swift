@@ -37,7 +37,8 @@ struct ExerciseView: View {
                         ExerciseDeleteButton(viewModel: $addExerciseViewModel).padding()
                     }
                 }
-            }.sheet(isPresented: $addExerciseViewModel.showEditSheet) {
+            }
+            .sheet(isPresented: $addExerciseViewModel.showEditSheet) {
                 AddExerciseView(model: model, id: id)
             }
 
@@ -64,14 +65,16 @@ struct ExerciseDeleteButton: View {
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
-        Button(action: { viewModel.showDeleteAlert = true }) {
-            Text("Delete")
-        }
+        Button(
+            action: { viewModel.showDeleteAlert = true },
+            label: {
+                Text("Delete")
+            }
+        )
         .alert(isPresented: $viewModel.showDeleteAlert) {
             deleteAlert
         }
     }
-
     private var deleteAlert: Alert {
         Alert(title: Text("Delete Exercise"),
               message: Text("""
@@ -81,7 +84,6 @@ struct ExerciseDeleteButton: View {
               primaryButton: .destructive(Text("Delete"), action: delete),
               secondaryButton: .cancel())
     }
-
     private func delete() {
         viewModel.delete()
         dismiss()
@@ -94,8 +96,8 @@ struct ExerciseEditButton: View {
         Button(action: {
             viewModel.showEditSheet = true
             viewModel.editing = true
-        }) {
+        }, label: {
             Text("Edit")
-        }
+        })
     }
 }

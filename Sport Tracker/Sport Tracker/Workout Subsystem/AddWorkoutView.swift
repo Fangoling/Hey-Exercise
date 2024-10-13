@@ -32,8 +32,13 @@ struct AddWorkoutView: View {
                 // .onMove (perform: workoutViewModel.move)
                 .onDelete(perform: workoutViewModel.delete)
                 Section {
-                    ExercisePickerView(pickedExercises: $workoutViewModel.exercisePairs, exercises: mainModel.exercises, model: mainModel, weight: $weight, repetitions: $repetitions, duration: $duration, expandedExercise: $exerciseSelected)
-                        .background(Color(.white))
+                    ExercisePickerView(
+                        pickedExercises: $workoutViewModel.exercisePairs,
+                        exercises: mainModel.exercises, model: mainModel,
+                        weight: $weight, repetitions: $repetitions,
+                        duration: $duration, expandedExercise: $exerciseSelected
+                    )
+                    .background(Color(.white))
                 }
             }
             .task {
@@ -95,16 +100,27 @@ struct ExercisePickerView: View {
                 withAnimation {
                     expandedExercise = (expandedExercise == exercise) ? nil : exercise
                 }
-            }) {
+            }, label: {
                 HStack {
                     Text(exercise.name)
                 }
-            }) {
+            })) {
                 if expandedExercise == exercise {
                     let id = exercise.id ?? 0
-                    ExerciseTypePicker(weight: $weight, duration: $duration, repetitions: $repetitions, id: id, model: model)
+                    ExerciseTypePicker(
+                        weight: $weight,
+                        duration: $duration,
+                        repetitions: $repetitions,
+                        id: id,
+                        model: model
+                    )
                     Button(action: {
-                        let performance = Performance(date: Date(), repetitions: repetitions, weight: weight, duration: duration)
+                        let performance = Performance(
+                            date: Date(),
+                            repetitions: repetitions,
+                            weight: weight,
+                            duration: duration
+                        )
                         let pair = ExercisePerformancePair(exercise: exercise, performance: performance)
                         pickedExercises.append(pair)
                         expandedExercise = nil

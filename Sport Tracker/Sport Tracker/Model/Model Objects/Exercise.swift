@@ -27,7 +27,13 @@ public struct Exercise {
     public var description: String
     public var types: [ExerciseType]
     public var performances: [Performance]
-    public init(id: Int? = nil, name: String, description: String, types: [ExerciseType], performances: [Performance] = []) {
+    public init(
+        id: Int? = nil,
+        name: String,
+        description: String,
+        types: [ExerciseType],
+        performances: [Performance] = []
+    ) {
         if let id = id {
             self.id = id
         } else {

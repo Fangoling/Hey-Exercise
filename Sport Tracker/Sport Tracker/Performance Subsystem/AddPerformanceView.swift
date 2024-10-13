@@ -19,8 +19,15 @@ struct AddPerformanceView: View {
         NavigationStack {
             Form {
                 DatePicker("Date", selection: $date, displayedComponents: [.date])
-                ExerciseTypePicker(weight: $weight, duration: $duration, repetitions: $repetitions, id: id, model: model)
-            }.navigationTitle("Add Performance")
+                ExerciseTypePicker(
+                    weight: $weight,
+                    duration: $duration,
+                    repetitions: $repetitions,
+                    id: id,
+                    model: model
+                )
+            }
+            .navigationTitle("Add Performance")
             .toolbar {
                 ToolbarItem(placement: .bottomBar) {
                     Button {

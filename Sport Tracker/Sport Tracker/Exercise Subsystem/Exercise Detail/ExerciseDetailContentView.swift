@@ -29,9 +29,9 @@ struct ExerciseDetailContentView: View {
         .navigationBarItems(leading: Button(action: {
             self.mode.wrappedValue.dismiss()
             showTabBar.toggle()
-        }) {
+        }, label: {
             Image(systemName: "chevron.backward").bold()
             Text("Back")
-        })
+        }))
     }
 }

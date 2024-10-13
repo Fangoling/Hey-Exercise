@@ -30,7 +30,6 @@ public struct Workout {
     public var id: Int
     public var date: Date
     public var exercisePairs: [ExercisePerformancePair]
-
     public init(id: Int? = nil, date: Date, exercisePairs: [ExercisePerformancePair]) {
         if let id = id {
             self.id = id
@@ -41,7 +40,6 @@ public struct Workout {
         self.date = date
         self.exercisePairs = exercisePairs
     }
-
     public mutating func addExercise(_ exercise: Exercise, _ performace: Performance) {
         self.exercisePairs.append(ExercisePerformancePair(exercise: exercise, performance: performace))
     }

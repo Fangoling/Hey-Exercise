@@ -6,7 +6,12 @@
 //
 
 struct Quote: Codable {
-    public var q: String
-    public var a: String
-    public var h: String
+    public var quote: String
+    public var author: String
+    public var html: String
+    enum CodingKeys: String, CodingKey {
+        case quote = "q"
+        case author = "a"
+        case html = "h"
+    }
 }

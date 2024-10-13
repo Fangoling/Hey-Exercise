@@ -57,9 +57,10 @@ struct WorkoutDeleteButton: View {
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
-        Button(action: { viewModel.showDeleteAlert = true }) {
-            Text("Delete")
-        }
+        Button(
+            action: { viewModel.showDeleteAlert = true },
+            label: { Text("Delete") }
+        )
         .alert(isPresented: $viewModel.showDeleteAlert) {
             deleteAlert
         }
@@ -84,10 +85,10 @@ struct WorkoutDeleteButton: View {
 struct WorkoutEditButton: View {
     @Binding var viewModel: AddWorkoutViewModel
     var body: some View {
-        Button(action: {
+        Button {
             viewModel.showEditSheet = true
             viewModel.editing = true
-        }) {
+        } label: {
             Text("Edit")
         }
     }
