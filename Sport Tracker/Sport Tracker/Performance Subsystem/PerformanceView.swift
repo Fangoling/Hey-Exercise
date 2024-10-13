@@ -7,6 +7,33 @@
 
 import SwiftUI
 
+struct PerformanceView: View {
+    var performance: Performance
+    var body: some View {
+        HStack {
+            Text(performance.date.formatted(.dateTime))
+                .font(.callout)
+            Spacer()
+            if let reps = performance.repetitions {
+                Text("\(reps.formatted(.number)) x")
+                    .font(.title)
+                    .cornerRadius(10)
+            }
+            if let weight = performance.weight {
+                Text("\(weight.formatted(.number)) kg")
+                    .font(.title)
+                    .cornerRadius(10)
+            }
+            if let duration = performance.duration {
+                Text("\(duration.formatted(.number)) seconds")
+                    .font(.title)
+                    .cornerRadius(10)
+            }
+        }
+        .padding()
+    }
+}
+
 struct BestPerformanceView: View {
     @Environment(Model.self) private var model: Model
     var id: Int

@@ -6,12 +6,25 @@
 //
 
 import Foundation
+import os
 
 @Observable public class Model {
     public var exercises: [Exercise]
+    public var workouts: [Workout]
+    public var tabVisible: Bool = true
+    public var username: String = "Fangxing"
+    var currentQuote: Quote = Quote(quote: "", author: "", html: "")
+    public var allowNotifications: Bool = false
     public init(
-        exercises: [Exercise] = []
+        exercises: [Exercise] = [],
+        workouts: [Workout] = []
     ) {
+        self.exercises = []
+        self.workouts = []
+        initializeExercises()
+        initializeWorkouts()
+    }
+    private func initializeExercises() {
         self.exercises = [
             Exercise(
                 name: "Push-ups",
@@ -57,6 +70,19 @@ import Foundation
             }
         }
     }
+    private func initializeWorkouts() {
+        self.workouts = [
+            Workout(
+                date: Date(),
+                exercisePairs: [
+                    ExercisePerformancePair(
+                        exercise: self.exercises[0],
+                        performance: self.exercises[0].performances[0])
+                ]
+            )
+        ]
+    }
+    // Exercise functions
     public func addExercise(name: String, description: String, exerciseTypes: [ExerciseType]) {
         exercises.append(Exercise(name: name, description: description, types: exerciseTypes))
     }
@@ -99,9 +125,70 @@ import Foundation
     public func sortedPerformance(_ id: Int, for exerciseType: ExerciseType) -> [Performance] {
         if let exercise = exercise(id) {
             return exercise.performances.sorted {
-                $0.date < $1.date
+                $0.date > $1.date
             }
         }
         return []
     }
+    public func saveExercise(_ exercise: Exercise) {
+        let newExercise = exercise
+        self.exercises.replaceAndSort(newExercise)
+    }
+    public func deleteExercise(exerciseId id: Int?) {
+        self.exercises.removeAll(where: { $0.id == id })
+    }
+    // Workout functions
+    public func workout(_ id: Int) -> Workout? {
+        return workouts.first(where: { $0.id == id })
+    }
+    public func getDateSortedWorkout() -> [Workout] {
+        return workouts.sorted {
+            $0.date > $1.date
+        }
+    }
+    public func getLatestWorkout() -> Workout? {
+        return getDateSortedWorkout()[0]
+    }
+    public func saveWorkout(_ workout: Workout) {
+        let newWorkout = workout
+        self.workouts.replaceAndSort(newWorkout)
+    }
+    public func deleteWorkout(exerciseId id: Int?) {
+        self.exercises.removeAll(where: { $0.id == id })
+    }
+    // Quote functions
+    func fetchQuote() async throws -> Quote {
+        let quoteUrl: String = "https://zenquotes.io/api/random"
+        guard let url = URL(string: quoteUrl) else {
+            throw URLError(.badURL)
+        }
+        do {
+            Self.logger.trace("Start fetching quotes")
+            let (data, _) = try await URLSession.shared.data(from: url)
+            Self.logger.notice("Finished fetching quotes: \(data)")
+            Self.logger.trace("Start decoding quotes")
+            let quotes = try JSONDecoder().decode([Quote].self, from: data)
+            Self.logger.notice("Finished decoding quotes: \(quotes)")
+            return quotes[0]
+        } catch {
+            Self.logger.warning("\(error.localizedDescription, privacy: .public)")
+            return Quote(quote: "No quote for you today", author: "An error probably", html: "<div>")
+        }
+    }
+    func getQuote() async throws {
+        Task {
+            do {
+                let quote = try await fetchQuote()
+                DispatchQueue.main.async {
+                    self.currentQuote = quote
+                }
+            } catch {
+                print("Error while fetching")
+            }
+        }
+    }
+    private static let logger = Logger(
+        subsystem: Bundle.main.bundleIdentifier!,
+        category: String(describing: Model.self)
+    )
 }
