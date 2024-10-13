@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import os
 
 @Observable public class Model {
     public var exercises: [Exercise]
@@ -161,9 +162,18 @@ import Foundation
         guard let url = URL(string: quoteUrl) else {
             throw URLError(.badURL)
         }
-        let (data, _) = try await URLSession.shared.data(from: url)
-        let quotes = try JSONDecoder().decode([Quote].self, from: data)
-        return quotes[0]
+        do {
+            Self.logger.trace("Start fetching quotes")
+            let (data, _) = try await URLSession.shared.data(from: url)
+            Self.logger.notice("Finished fetching quotes: \(data)")
+            Self.logger.trace("Start decoding quotes")
+            let quotes = try JSONDecoder().decode([Quote].self, from: data)
+            Self.logger.notice("Finished decoding quotes: \(quotes)")
+            return quotes[0]
+        } catch {
+            Self.logger.warning("\(error.localizedDescription, privacy: .public)")
+            return Quote(quote: "No quote for you today", author: "An error probably", html: "<div>")
+        }
     }
     func getQuote() async throws {
         Task {
@@ -177,4 +187,8 @@ import Foundation
             }
         }
     }
+    private static let logger = Logger(
+        subsystem: Bundle.main.bundleIdentifier!,
+        category: String(describing: Model.self)
+    )
 }
