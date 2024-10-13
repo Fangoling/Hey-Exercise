@@ -124,7 +124,7 @@ import Foundation
     public func sortedPerformance(_ id: Int, for exerciseType: ExerciseType) -> [Performance] {
         if let exercise = exercise(id) {
             return exercise.performances.sorted {
-                $0.date < $1.date
+                $0.date > $1.date
             }
         }
         return []
