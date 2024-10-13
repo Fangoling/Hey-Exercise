@@ -50,6 +50,7 @@ struct AddWorkoutView: View {
                         workoutViewModel.save()
                         workoutViewModel.editing = false
                         dismiss()
+                        notification(date: workoutViewModel.date)
                     } label: {
                         Text("Save").bold()
                     }
@@ -59,7 +60,26 @@ struct AddWorkoutView: View {
             // hacky toolbar to hide outer tabbar when inside the nested tabbar
             // prevents slow reload of outer tabbar when going back
         }
-
+    }
+    func notification(date: Date) {
+        let content = UNMutableNotificationContent()
+        content.title = "Hey you have a workout today."
+        content.subtitle = "This is going to be really fun"
+        content.sound = UNNotificationSound.default
+        var notificationInterval: Double = 5
+        if date.timeIntervalSinceNow > 1 {
+            notificationInterval = date.timeIntervalSinceNow
+        }
+        let trigger = UNTimeIntervalNotificationTrigger(
+            timeInterval: notificationInterval,
+            repeats: false
+        )
+        let request = UNNotificationRequest(
+            identifier: UUID().uuidString,
+            content: content,
+            trigger: trigger
+        )
+        UNUserNotificationCenter.current().add(request)
     }
 }
 
