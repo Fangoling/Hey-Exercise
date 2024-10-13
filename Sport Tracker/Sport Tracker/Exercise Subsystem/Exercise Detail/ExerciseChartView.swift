@@ -16,7 +16,7 @@ struct ExerciseChartView: View {
         let values: [(String, Double)] = data.map {
             ($0.date.formatted(.dateTime), $0.getValue(for: exerciseType) ?? 0.0)
         }
-        CardView {
+        CardView(showShadow: false) {
             ChartLabel(exerciseType.description, type: .title)
             BarChart()
                 .scaleEffect(0.8)
@@ -27,5 +27,6 @@ struct ExerciseChartView: View {
             foregroundColor: ColorGradient(.blue, .purple)
         ))
         .frame(height: 300)
+        .cornerRadius(10)
     }
 }
