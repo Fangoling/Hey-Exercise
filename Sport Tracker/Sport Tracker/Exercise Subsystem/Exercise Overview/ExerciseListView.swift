@@ -16,7 +16,8 @@ struct ExerciseListView: View {
                     ZStack {
                         HStack {
                             Text(exercise.name).font(Font.system(size: 22))
-                        }.padding()
+                        }
+                        .padding()
                     }
                 })
             }
