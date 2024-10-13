@@ -52,9 +52,8 @@ struct ExerciseDetailView: View {
     var data: [Performance]
     var body: some View {
         VStack {
-            Text(type.description).font(.largeTitle)
-            BestPerformanceView(id: id, exerciseType: type)
             ExerciseChartView(data: data, exerciseType: type)
+            BestPerformanceView(id: id, exerciseType: type)
         }
         .cardViewModifier()
     }
@@ -67,9 +66,7 @@ struct ExerciseDeleteButton: View {
     var body: some View {
         Button(
             action: { viewModel.showDeleteAlert = true },
-            label: {
-                Text("Delete")
-            }
+            label: { Text("Delete") }
         )
         .alert(isPresented: $viewModel.showDeleteAlert) {
             deleteAlert

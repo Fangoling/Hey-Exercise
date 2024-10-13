@@ -6,22 +6,26 @@
 //
 
 import SwiftUI
-import Charts
+import SwiftUICharts
 
 struct ExerciseChartView: View {
     @Environment(Model.self) private var model: Model
     var data: [Performance]
     var exerciseType: ExerciseType
     var body: some View {
-        Chart(data) {
-            BarMark(
-                x: .value("Day", $0.date),
-                y: .value(exerciseType.description, $0.getValue(for: exerciseType) ?? 0.0)
-            )
+        let values: [(String, Double)] = data.map {
+            ($0.date.formatted(.dateTime), $0.getValue(for: exerciseType) ?? 0.0)
         }
-        .frame(maxWidth: .infinity)
-        .scaleEffect(0.8)
-        .background(Color("CardColor"))
-        .padding()
+        CardView {
+            ChartLabel(exerciseType.description, type: .title)
+            BarChart()
+                .scaleEffect(0.8)
+        }
+        .data(values)
+        .chartStyle(ChartStyle(
+            backgroundColor: .clear,
+            foregroundColor: ColorGradient(.blue, .purple)
+        ))
+        .frame(height: 300)
     }
 }
