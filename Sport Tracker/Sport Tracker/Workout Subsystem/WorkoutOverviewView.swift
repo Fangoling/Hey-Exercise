@@ -21,12 +21,11 @@ struct WorkoutOverviewView: View {
                         .bold()
                 }
                 MotivationalQuoteView(quote: model.currentQuote)
-                UpComingWorkoutView()
+                UpComingWorkoutView(model: model, latestWorkout: model.getLatestWorkout())
                 HStack {
                     SeeAllWorkoutsButton()
                         .cardViewModifier()
-                    AddWorkoutButton(showAddWorkoutSheet: $showAddWorkoutSheet)
-                        .cardViewModifier()
+                    AddWorkoutButton(model: model, showAddWorkoutSheet: $showAddWorkoutSheet)
                 }
             }
             .sheet(isPresented: $showAddWorkoutSheet) { AddWorkoutView(model: model) }
@@ -42,16 +41,29 @@ struct WorkoutOverviewView: View {
 }
 
 struct UpComingWorkoutView: View {
+    var model: Model
+    var latestWorkout: Workout?
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("Upcoming workout: ")
-                .font(.title)
-            HStack {
-                Text(Date().formatted(.dateTime))
+        if let workout = latestWorkout {
+            NavigationLink(destination: AddWorkoutView(
+                model: model,
+                id: workout.id
+            )) {
+                VStack(alignment: .leading) {
+                    Text("Upcoming workout: ")
+                        .font(.title)
+                    Text(workout.date.formatted(.dateTime))
+                        .font(.title)
+                }
+            }
+            .cardViewModifier()
+        } else {
+            VStack(alignment: .leading) {
+                Text("Upcoming workout: ")
                     .font(.title)
             }
+            .cardViewModifier()
         }
-        .cardViewModifier()
     }
 }
 
@@ -67,11 +79,13 @@ struct MotivationalQuoteView: View {
                     Text("\(quote.quote)")
                         .font(Font.custom("adelia", size: 20))
                 } else {
-                    Text("\(quote.quote)").font(Font.system(size: 20))
+                    Text("\(quote.quote)")
+                        .font(Font.system(size: 20))
                 }
-                Text("- \(quote.author)").font(.headline)
+                Text("- \(quote.author)")
+                    .font(.headline)
             }
-            .foregroundStyle(.black)
+            .foregroundStyle(.primary)
             .cardViewModifier()
         })
     }
@@ -87,14 +101,19 @@ struct SeeAllWorkoutsButton: View {
 }
 
 struct AddWorkoutButton: View {
+    var model: Model
     @Binding var showAddWorkoutSheet: Bool
     var body: some View {
-        Button(action: {
-            showAddWorkoutSheet.toggle()
-        }, label: {
-            Text("Add new workout")
-                .font(.title)
-        })
+        NavigationLink(destination: AddWorkoutView(
+            model: model,
+            id: nil
+        )) {
+            VStack(alignment: .leading) {
+                Text("Add new workout")
+                    .font(.title)
+            }
+        }
+        .cardViewModifier()
     }
 }
 
