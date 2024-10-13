@@ -21,7 +21,7 @@ private struct BackgroundViewModifier: ViewModifier {
 }
 
 private struct CardViewModifier: ViewModifier {
-    var backgroundColor: Color = Color("CardColor")
+    var backgroundColor = Color("CardColor")
     func body(content: Content) -> some View {
         content
             .padding()

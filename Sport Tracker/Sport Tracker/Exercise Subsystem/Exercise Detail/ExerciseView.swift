@@ -41,7 +41,6 @@ struct ExerciseView: View {
             .sheet(isPresented: $addExerciseViewModel.showEditSheet) {
                 AddExerciseView(model: model, id: id)
             }
-
         }
     }
 }

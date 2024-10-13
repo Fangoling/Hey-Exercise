@@ -5,7 +5,7 @@
 //  Created by ipraktikum on 11.10.24.
 //
 
-struct Quote: Codable {
+public struct Quote: Codable {
     public var quote: String
     public var author: String
     public var html: String

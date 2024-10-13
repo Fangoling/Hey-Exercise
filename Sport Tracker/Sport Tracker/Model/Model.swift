@@ -13,7 +13,7 @@ import os
     public var workouts: [Workout]
     public var tabVisible: Bool = true
     public var username: String = "Fangxing"
-    var currentQuote: Quote = Quote(quote: "", author: "", html: "")
+    var currentQuote = Quote(quote: "", author: "", html: "")
     public var allowNotifications: Bool = false
     public init(
         exercises: [Exercise] = [],
@@ -188,7 +188,7 @@ import os
         }
     }
     private static let logger = Logger(
-        subsystem: Bundle.main.bundleIdentifier!,
+        subsystem: Bundle.main.bundleIdentifier ?? "com.default.identifier",
         category: String(describing: Model.self)
     )
 }

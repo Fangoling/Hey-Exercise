@@ -10,7 +10,7 @@ import SwiftUI
 
 @Observable class AddWorkoutViewModel {
     var id: Int?
-    var date: Date = Date()
+    var date = Date()
     var exercisePairs: [ExercisePerformancePair] = []
     private weak var model: Model?
     var showDeleteAlert = false
@@ -36,7 +36,6 @@ import SwiftUI
         }
         self.date = workout.date
         self.exercisePairs = workout.exercisePairs
-
     }
     func save() {
         guard let model = model else {

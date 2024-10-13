@@ -69,7 +69,5 @@ struct ExerciseTypePicker: View {
                 }
             }
         }
-
     }
-
 }

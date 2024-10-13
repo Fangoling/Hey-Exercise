@@ -33,9 +33,12 @@ struct AddWorkoutView: View {
             Section {
                 ExercisePickerView(
                     pickedExercises: $workoutViewModel.exercisePairs,
-                    exercises: mainModel.exercises, model: mainModel,
-                    weight: $weight, repetitions: $repetitions,
-                    duration: $duration, expandedExercise: $exerciseSelected
+                    exercises: mainModel.exercises,
+                    model: mainModel,
+                    weight: $weight,
+                    repetitions: $repetitions,
+                    duration: $duration,
+                    expandedExercise: $exerciseSelected
                 )
             }
         }
@@ -98,9 +101,7 @@ struct PerformanceInWorkoutView: View {
                 Text("\(duration.formatted(.number)) seconds.")
             }
         }
-
     }
-
 }
 
 struct ExercisePickerView: View {
@@ -140,10 +141,7 @@ struct ExercisePickerView: View {
                         )
                         let pair = ExercisePerformancePair(exercise: exercise, performance: performance)
                         pickedExercises.append(pair)
-                        expandedExercise = nil
-                        weight = nil
-                        repetitions = nil
-                        duration = nil
+                        resetSelection()
                     }, label: {
                         Text("Add to workout")
                     })
@@ -151,5 +149,11 @@ struct ExercisePickerView: View {
                 }
             }
         }
+    }
+    private func resetSelection() {
+        expandedExercise = nil
+        weight = nil
+        repetitions = nil
+        duration = nil
     }
 }
