@@ -54,7 +54,7 @@ I want to be able to ...
 
 ## Analysis
 <div align="center">
-<img width=75% src="./UMLClassDiagram.png" alt="Analysis Model of the Fitness Tracker App">
+<img width=75% src="./ClassDiagram.png" alt="Analysis Model of the Fitness Tracker App">
 </div>
 
 ## System Design
