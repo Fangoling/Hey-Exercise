@@ -25,7 +25,7 @@ struct ExerciseOverView: View {
                     }
                 }
                 .sheet(isPresented: $addSheetOpen) {
-                    AddExerciseView()
+                    AddExerciseView(model: self.model, id: nil)
                 }
         }
     }

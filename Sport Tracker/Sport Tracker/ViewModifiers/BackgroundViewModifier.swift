@@ -20,11 +20,28 @@ private struct BackgroundViewModifier: ViewModifier {
     }
 }
 
+private struct CardViewModifier: ViewModifier {
+    var backgroundColor = Color("CardColor")
+    func body(content: Content) -> some View {
+        content
+            .padding()
+            .frame(maxWidth: .infinity, minHeight: 150, alignment: .center)
+            .background(.background.secondary)
+            .cornerRadius(20)
+            .padding(20)
+            .shadow(color: Color.black.opacity(0.2), radius: 4)
+    }
+}
+
 // MARK: - View + BackgroundViewModifier
 extension View {
     /// Style a `View` with a grouped system background color
     /// - Returns: A view with the applied background
     func backgroundViewModifier() -> some View {
         ModifiedContent(content: self, modifier: BackgroundViewModifier())
+    }
+
+    func cardViewModifier() -> some View {
+        ModifiedContent(content: self, modifier: CardViewModifier())
     }
 }

@@ -1,20 +1,19 @@
 //
-//  ExerciseView.swift
+//  WorkoutView.swift
 //  Sport Tracker
 //
-//  Created by ipraktikum on 09.10.24.
+//  Created by ipraktikum on 12.10.24.
 //
 
 import SwiftUI
-import Charts
 
-struct ExerciseView: View {
+struct WorkoutView: View {
     @Environment(Model.self) private var model: Model
     @State private var addSheetOpen: Bool = false
-    @State private var addExerciseViewModel: AddExerciseViewModel
+    @State private var workoutViewModel: AddWorkoutViewModel
     var id: Int
     init(model: Model, modelId: Int?, id: Int) {
-        self._addExerciseViewModel = State(wrappedValue: AddExerciseViewModel(model, id: modelId))
+        self._workoutViewModel = State(wrappedValue: AddWorkoutViewModel(model))
         self.id = id
     }
     var body: some View {
@@ -27,39 +26,33 @@ struct ExerciseView: View {
                     ForEach(exerciseTypes, id: \.self) { type in
                         ExerciseDetailView(id: id, type: type, data: data)
                     }
-                    VStack {
-                        Text("Notes").font(.largeTitle)
-                        Text(exercise?.description ?? "No notes")
-                    }
-                    .cardViewModifier()
                     HStack(alignment: .center) {
-                        ExerciseEditButton(viewModel: $addExerciseViewModel).padding()
-                        ExerciseDeleteButton(viewModel: $addExerciseViewModel).padding()
+                        WorkoutEditButton(viewModel: $workoutViewModel).padding()
+                        WorkoutDeleteButton(viewModel: $workoutViewModel).padding()
                     }
                 }
-            }
-            .sheet(isPresented: $addExerciseViewModel.showEditSheet) {
+            }.sheet(isPresented: $workoutViewModel.showEditSheet) {
                 AddExerciseView(model: model, id: id)
             }
         }
     }
 }
 
-struct ExerciseDetailView: View {
-    var id: Int
-    var type: ExerciseType
-    var data: [Performance]
+struct WorkoutDetailView: View {
+    var date: Date = .init()
+    var exercises: [Exercise]
+
     var body: some View {
         VStack {
-            ExerciseChartView(data: data, exerciseType: type)
-            BestPerformanceView(id: id, exerciseType: type)
+            Text(date.formatted(.dateTime))
+                .font(.largeTitle)
         }
         .cardViewModifier()
     }
 }
 
-struct ExerciseDeleteButton: View {
-    @Binding var viewModel: AddExerciseViewModel
+struct WorkoutDeleteButton: View {
+    @Binding var viewModel: AddWorkoutViewModel
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
@@ -71,6 +64,7 @@ struct ExerciseDeleteButton: View {
             deleteAlert
         }
     }
+
     private var deleteAlert: Alert {
         Alert(title: Text("Delete Exercise"),
               message: Text("""
@@ -80,20 +74,21 @@ struct ExerciseDeleteButton: View {
               primaryButton: .destructive(Text("Delete"), action: delete),
               secondaryButton: .cancel())
     }
+
     private func delete() {
         viewModel.delete()
         dismiss()
     }
 }
 
-struct ExerciseEditButton: View {
-    @Binding var viewModel: AddExerciseViewModel
+struct WorkoutEditButton: View {
+    @Binding var viewModel: AddWorkoutViewModel
     var body: some View {
-        Button(action: {
+        Button {
             viewModel.showEditSheet = true
             viewModel.editing = true
-        }, label: {
+        } label: {
             Text("Edit")
-        })
+        }
     }
 }

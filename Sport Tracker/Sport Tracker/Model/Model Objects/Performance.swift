@@ -36,5 +36,10 @@ public struct Performance {
 @available(iOS 17.0, *)
 extension Performance: Hashable { }
 
+// MARK: Performance: Identifiable
 @available(iOS 17.0, *)
 extension Performance: Identifiable { }
+
+// MARK: Performance: Codable
+@available(iOS 17.0, *)
+extension Performance: Codable { }
