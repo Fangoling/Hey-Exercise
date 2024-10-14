@@ -28,7 +28,6 @@ private struct CardViewModifier: ViewModifier {
             .frame(maxWidth: .infinity, minHeight: 150, alignment: .center)
             .background(.background.secondary)
             .cornerRadius(20)
-            .padding(20)
             .shadow(color: Color.black.opacity(0.2), radius: 4)
     }
 }
