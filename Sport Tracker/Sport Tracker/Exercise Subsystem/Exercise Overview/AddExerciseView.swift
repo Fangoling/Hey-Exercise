@@ -22,7 +22,7 @@ struct AddExerciseView: View {
                 Section(header: Text("Notes")) {
                     TextField("", text: $addExerciseViewModel.description)
                 }
-                if addExerciseViewModel.editing {
+                if addExerciseViewModel.id == nil {
                     Section(header: Text("Exercise Type")) {
                         ExerciseTypePickerView(exerciseTypes: $addExerciseViewModel.types)
                     }
@@ -31,7 +31,7 @@ struct AddExerciseView: View {
             .task {
                 addExerciseViewModel.updateStates()
             }
-            .navigationTitle(addExerciseViewModel.editing ? "Edit Exercise" : "Add Exercise")
+            .navigationTitle(addExerciseViewModel.id != nil ? "Edit Exercise" : "Add Exercise")
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
