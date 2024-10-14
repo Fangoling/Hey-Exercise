@@ -53,13 +53,23 @@ struct AddWorkoutView: View {
                     dismiss()
                     notification(date: workoutViewModel.date)
                 } label: {
-                    Text("Save").bold()
+                    Text("Save")
+                        .bold()
+                        .foregroundStyle(.blue)
                 }
             }
         }
-        .toolbar(showTabBar ? .visible : .hidden, for: .tabBar, .bottomBar)
         // hacky toolbar to hide outer tabbar when inside the nested tabbar
         // prevents slow reload of outer tabbar when going back
+        .toolbar(showTabBar ? .visible : .hidden, for: .tabBar, .bottomBar)
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: Button(action: {
+            self.mode.wrappedValue.dismiss()
+            showTabBar.toggle()
+        }, label: {
+            Image(systemName: "chevron.backward").bold().foregroundStyle(.blue)
+            Text("Back").foregroundStyle(.blue)
+        }))
     }
     func notification(date: Date) {
         let content = UNMutableNotificationContent()
