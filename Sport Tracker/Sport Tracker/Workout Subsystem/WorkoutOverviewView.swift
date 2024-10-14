@@ -12,7 +12,7 @@ struct WorkoutOverviewView: View {
     @State private var showAddWorkoutSheet: Bool = false
     var body: some View {
         NavigationStack {
-            VStack {
+            VStack(spacing: 16) {
                 HStack {
                     Text("Welcome Back ")
                         .font(.largeTitle) +
@@ -22,12 +22,13 @@ struct WorkoutOverviewView: View {
                 }
                 MotivationalQuoteView(quote: model.currentQuote)
                 UpComingWorkoutView(model: model, latestWorkout: model.getLatestWorkout())
-                HStack {
+                HStack(spacing: 16) {
                     SeeAllWorkoutsButton()
                         .cardViewModifier()
                     AddWorkoutButton(model: model, showAddWorkoutSheet: $showAddWorkoutSheet)
                 }
             }
+            .padding()
             .sheet(isPresented: $showAddWorkoutSheet) { AddWorkoutView(model: model) }
             .onAppear {
                 Task {
@@ -50,11 +51,12 @@ struct UpComingWorkoutView: View {
                 model: model,
                 id: workout.id
             )) {
-                VStack(alignment: .leading) {
+                VStack(alignment: .center) {
                     Text("Upcoming workout: ")
                         .font(.title)
+                        .bold()
                     Text(workout.date.formatted(.dateTime))
-                        .font(.title)
+                        .font(.title2)
                 }
             }
             .cardViewModifier()
@@ -96,7 +98,7 @@ struct SeeAllWorkoutsButton: View {
     var body: some View {
         NavigationLink(destination: WorkoutListView()) {
             Text("See all workouts")
-                .font(.title)
+                .font(.title2)
         }
     }
 }
@@ -111,7 +113,7 @@ struct AddWorkoutButton: View {
         )) {
             VStack(alignment: .leading) {
                 Text("Add new workout")
-                    .font(.title)
+                    .font(.title2)
             }
         }
         .cardViewModifier()
