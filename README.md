@@ -35,7 +35,7 @@ Second of all, it would be nice to be able to add exercises and the correspondin
 
 Moreover, the app should provide me with notifications in the form of motivational texts to remind me of upcoming training sessions. This would help me maintain motivation and consistency in my fitness journey.
 
-Additionally, I want to be able to generate workouts consisting of exercises that I am capable of performing.
+Additionally, I want to be able to generate motivational quotes to motivate me when opening the app.
 
 In summary, as a student trying to maintain a healthy and balanced life, I need an iOS app that helps me keep track of my fitness routine, reminds me of workouts, and provides insights into my past progress. With such an app, I would be able to make better decisions in maintaining a better routine and ultimately achieve a healthier life.
 
@@ -50,7 +50,7 @@ I want to be able to ...
 - ...add new exercises
 - ...input performance metrics for the exercises
 - ...display exercise progress in a graph
-- ...generate workouts consisting of stored exercises
+- ...receive motivational quotes
 
 ## Analysis
 <div align="center">
@@ -66,7 +66,7 @@ I want to be able to ...
 
 | name   |  task  | priority |
 | ------ | ------ | ------|
-|   1    | Add exercise | High |
+|   1    | Add exercise | High | 
 |   2    | Edit exercise | Medium |
 |   3    | Delete exercise | Medium |
 |   4    | Add performance to exercise | Medium |
@@ -77,4 +77,4 @@ I want to be able to ...
 |   9    | Edit workout | Medium |
 |   10   | Delete workout | Medium |
 |   11   | Notify User about workouts | High |
-|   12   | Generate workout using Ai | Low |
+|   12   | Generate Motivational Quotes | Low |
