@@ -37,6 +37,7 @@ struct WorkoutOverviewView: View {
                 }
             }
         }
+        .foregroundStyle(.font)
     }
 }
 

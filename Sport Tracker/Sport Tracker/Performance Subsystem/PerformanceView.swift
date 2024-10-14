@@ -53,7 +53,8 @@ struct BestPerformanceView: View {
                 if let duration = bestPerformance.duration {
                     Text("\(duration.formatted(.number)) seconds.").font(.title)
                 }
-            }.padding()
+            }
+            .padding()
         }
     }
 }
