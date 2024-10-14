@@ -23,7 +23,7 @@ struct ExerciseView: View {
         let data = model.exercise(id)?.performances ?? []
         NavigationView {
             ScrollView {
-                VStack {
+                VStack(spacing: 16) {
                     ForEach(exerciseTypes, id: \.self) { type in
                         ExerciseDetailView(id: id, type: type, data: data)
                     }
@@ -37,6 +37,7 @@ struct ExerciseView: View {
                         ExerciseDeleteButton(viewModel: $addExerciseViewModel).padding()
                     }
                 }
+                .padding()
             }
             .sheet(isPresented: $addExerciseViewModel.showEditSheet) {
                 AddExerciseView(model: model, id: id)
