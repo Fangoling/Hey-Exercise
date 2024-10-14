@@ -40,28 +40,6 @@ struct ExercisePerformanceView: View {
     }
 }
 
-struct PerformanceView: View {
-    var performance: Performance
-    var body: some View {
-        VStack(alignment: .leading) {
-            Text(performance.date.formatted(.dateTime)).font(.caption)
-            Spacer()
-            HStack {
-                Spacer()
-                if let reps = performance.repetitions {
-                    Text("\(reps.formatted(.number)) x").font(.headline)
-                }
-                if let weight = performance.weight {
-                    Text("\(weight.formatted(.number)) kg").font(.headline)
-                }
-                if let duration = performance.duration {
-                    Text("\(duration.formatted(.number)) seconds").font(.headline)
-                }
-            }
-        }
-    }
-}
-
 #Preview {
     ExercisePerformanceView(id: 0).environment(Model() as Model)
 }

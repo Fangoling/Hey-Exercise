@@ -12,7 +12,7 @@ struct SportTrackerApp: App {
     @State var globalViewModel = Model()
     var body: some Scene {
         WindowGroup {
-            ExerciseOverView()
+            DetailContentView()
                 .environment(globalViewModel)
         }
     }
